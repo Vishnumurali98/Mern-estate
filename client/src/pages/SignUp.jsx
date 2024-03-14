@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const navigate=useNavigate()
   const handleChange = (e) => {
     setFormData({
@@ -27,7 +27,7 @@ export default function SignUp() {
       });
       const data = await res.json();
       if (data.success === false) {
-        setLoading(true);
+        setLoading(false);
         setError(data.message);
         return;
       }
